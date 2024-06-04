@@ -1,0 +1,1 @@
+-keep class ios.tyler.t_shop.BuildConfig { *; }
