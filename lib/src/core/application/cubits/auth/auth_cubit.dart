@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
+import 'package:dartx/dartx.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../common/extensions/int_duration.dart';
 import '../../../../common/utils/validator.dart';
 import '../../../../modules/auth/domain/entities/user.dart';
 import '../../../../modules/auth/domain/interfaces/auth_repository_interface.dart';
@@ -49,6 +51,7 @@ class AuthCubit extends Cubit<AuthState> {
   void logout() async {
     await state.whenOrNull(authenticated: (_) async {
       emit(const _Loading());
+      await 2.seconds.delay;
       await _repository.logout();
       emit(const _Unauthenticated());
     });

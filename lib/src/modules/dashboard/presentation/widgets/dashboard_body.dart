@@ -26,9 +26,11 @@ class _DashboardBodyState extends State<DashboardBody>
   void initState() {
     super.initState();
     _controller = MotionTabBarController(
+      initialIndex: 0,
       length: 3,
       vsync: this,
     );
+    context.read<DashboardCubit>().setPosition(_controller?.index ?? 0);
   }
 
   @override

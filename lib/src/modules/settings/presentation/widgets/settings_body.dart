@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 import '../../../../../generated/l10n.dart';
 import '../../../../common/extensions/build_context_x.dart';
 import '../../../../common/extensions/locale_x.dart';
 import '../../../../common/widgets/background_container.dart';
+import '../../../../common/widgets/common_button.dart';
+import '../../../../core/application/cubits/auth/auth_cubit.dart';
 import '../../../../core/application/cubits/lang/lang_cubit.dart';
 import '../../../../core/application/cubits/theme/theme_cubit.dart';
 
@@ -17,14 +20,44 @@ class SettingsBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundContainer(
-      child: ListView(
-        children: [
-          _buildLanguageDropdown(context),
-          _buildThemeModeDropdown(context),
-          _buildVersionInfo(context),
-        ],
-      ),
+      child: Column(children: [
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                _buildLanguageDropdown(context),
+                _buildThemeModeDropdown(context),
+                _buildVersionInfo(context),
+              ],
+            ),
+          ),
+        ),
+        _buildLogout(context),
+      ]),
     );
+  }
+
+  Widget _buildLogout(BuildContext context) {
+    return SizedBox(
+        width: double.infinity,
+        child: Padding(
+          padding: EdgeInsets.only(
+                  top: 12,
+                  left: 24,
+                  right: 24,
+                  bottom: context.mediaQuery.padding.bottom + 40)
+              .w,
+          child: BlocBuilder<AuthCubit, AuthState>(
+            builder: (context, state) {
+              return CommonButton(
+                  title: context.s.common_logout,
+                  icon: Icons.logout,
+                  isLoading:
+                      state.maybeWhen(loading: () => true, orElse: () => false),
+                  onPressed: () => context.read<AuthCubit>().logout());
+            },
+          ),
+        ));
   }
 
   Widget _buildLanguageDropdown(BuildContext context) {

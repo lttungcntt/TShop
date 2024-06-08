@@ -40,7 +40,7 @@ class AuthRepository implements IAuthRepository {
     CancelToken? token,
   }) async {
     var result = await _client.loginFailed(token).result();
-    if (request.password == 'aA12345@') {
+    if (request.password == 'aA12345') {
       result = await _client.login(request, token).result();
     }
     return result.fold(

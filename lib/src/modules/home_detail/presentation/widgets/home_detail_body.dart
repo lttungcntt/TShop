@@ -6,6 +6,7 @@ import '../../../../common/extensions/build_context_dialog.dart';
 import '../../../../common/extensions/build_context_x.dart';
 import '../../../../common/extensions/optional_x.dart';
 import '../../../../common/widgets/background_container.dart';
+import '../../../../common/widgets/common_button.dart';
 import '../../../../common/widgets/custom_slider.dart';
 import '../../../../common/widgets/loading_text_empty.dart';
 import '../../../../common/widgets/material_ink_well.dart';
@@ -93,40 +94,15 @@ class HomeDetailBody extends StatelessWidget {
                       width: double.infinity,
                       child: Padding(
                         padding: EdgeInsets.only(
-                                top: 12,
-                                left: 24,
-                                right: 24,
-                                bottom: context.mediaQuery.padding.bottom + 20)
-                            .w,
-                        child: ElevatedButton.icon(
-                          onPressed: () {
-                            // Handle button press
-                          },
-                          icon: Icon(Icons.contact_phone,
-                              color: context.colorTheme
-                                  .primaryText), // Use the contact_phone icon
-                          label: Padding(
-                            padding: EdgeInsets.only(top: 12.w, bottom: 12.w),
-                            child: Text(
-                              'Contact Us',
-                              style: context.textTheme.bold.copyWith(
-                                  color: context.colorTheme.primaryText),
-                            ),
-                          ),
-                          style: ButtonStyle(
-                            overlayColor: WidgetStateProperty.all(
-                                context.colorTheme.primary.withOpacity(0.8)),
-                            backgroundColor: WidgetStateProperty.all(
-                                context.colorTheme.primaryContainer),
-                            shape: WidgetStateProperty.all(
-                              RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(1.0),
-                                side: BorderSide(
-                                    color: context.colorTheme.primaryText,
-                                    width: 1.0),
-                              ),
-                            ),
-                          ),
+                          top: 12,
+                          left: 24,
+                          right: 24,
+                          bottom: context.mediaQuery.padding.bottom + 20,
+                        ).w,
+                        child: CommonButton(
+                          onPressed: () {},
+                          icon: Icons.contact_phone,
+                          title: 'Contact Us',
                         ),
                       ),
                     ),

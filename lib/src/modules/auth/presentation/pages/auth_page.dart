@@ -1,10 +1,11 @@
 import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_login/flutter_login.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../../../../generated/assets.gen.dart';
-import '../../../../../generated/colors.gen.dart';
 import '../../../../common/extensions/build_context_dialog.dart';
 import '../../../../common/extensions/build_context_x.dart';
 import '../../../../core/application/cubits/auth/auth_cubit.dart';
